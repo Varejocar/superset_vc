@@ -25,7 +25,7 @@ x-superset-image: &superset-image apachesuperset.docker.scarf.sh/apache/superset
 x-superset-volumes:
   &superset-volumes # /app/pythonpath_docker will be appended to the PYTHONPATH in the final container
   - ./docker:/app/docker
-  - superset_home:/app/superset_home
+  - /opt/docker_data/superset/superset_home:/app/superset_home
 
 services:
   redis:
@@ -33,7 +33,7 @@ services:
     container_name: superset_cache
     restart: unless-stopped
     volumes:
-      - redis:/data
+      - /opt/docker_data/superset/redis:/data
 
   db:
     env_file:
@@ -45,7 +45,7 @@ services:
     container_name: superset_db
     restart: unless-stopped
     volumes:
-      - db_home:/var/lib/postgresql/data
+      - /opt/docker_data/superset/db_home:/var/lib/postgresql/data
       - ./docker/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
 
   superset:

@@ -98,12 +98,51 @@ class CeleryConfig:
 
 CELERY_CONFIG = CeleryConfig
 
-FEATURE_FLAGS = {"ALERT_REPORTS": True}
+FEATURE_FLAGS = {"ALERT_REPORTS": True
+                ,"DASHBOARD_RBAC": True
+                ,"DRILL_TO_DETAIL": True
+                ,"DRILL_BY": True
+                ,"TAGGING_SYSTEM": True
+                ,"ALERTS_ATTACH_REPORTS": True
+                ,"SQLLAB_BACKEND_PERSISTENCE": True}
 ALERT_REPORTS_NOTIFICATION_DRY_RUN = True
 WEBDRIVER_BASEURL = "http://superset:8088/"  # When using docker compose baseurl should be http://superset_app:8088/  # noqa: E501
 # The base URL for the email report hyperlinks.
 WEBDRIVER_BASEURL_USER_FRIENDLY = WEBDRIVER_BASEURL
 SQLLAB_CTAS_NO_LIMIT = True
+
+# ---------------------------------------------------
+# Babel config for translations
+# ---------------------------------------------------
+# Setup default language
+BABEL_DEFAULT_LOCALE = "en"
+# Your application default translation path
+BABEL_DEFAULT_FOLDER = "superset/translations"
+# The allowed translation for your app
+LANGUAGES = {
+    "en": {"flag": "us", "name": "English"},
+    "es": {"flag": "es", "name": "Spanish"},
+    "it": {"flag": "it", "name": "Italian"},
+    "fr": {"flag": "fr", "name": "French"},
+    "zh": {"flag": "cn", "name": "Chinese"},
+    "zh_TW": {"flag": "tw", "name": "Traditional Chinese"},
+    "ja": {"flag": "jp", "name": "Japanese"},
+    "de": {"flag": "de", "name": "German"},
+    "pt": {"flag": "pt", "name": "Portuguese"},
+    "pt_BR": {"flag": "br", "name": "Brazilian Portuguese"},
+    "ru": {"flag": "ru", "name": "Russian"},
+    "ko": {"flag": "kr", "name": "Korean"},
+    "sk": {"flag": "sk", "name": "Slovak"},
+    "sl": {"flag": "si", "name": "Slovenian"},
+    "nl": {"flag": "nl", "name": "Dutch"},
+    "uk": {"flag": "uk", "name": "Ukranian"},
+}
+# Turning off i18n by default as translation in most languages are
+# incomplete and not well maintained.   
+LANGUAGES = {
+        "en": {"flag": "us", "name": "English"},
+        "pt_BR": {"flag": "br", "name": "Brazilian Portuguese"},
+        }
 
 log_level_text = os.getenv("SUPERSET_LOG_LEVEL", "INFO")
 LOG_LEVEL = getattr(logging, log_level_text.upper(), logging.INFO)
