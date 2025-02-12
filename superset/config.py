@@ -196,7 +196,7 @@ SECRET_KEY = os.environ.get("SUPERSET_SECRET_KEY") or CHANGE_ME_SECRET_KEY
 # )
 
 # SQLALCHEMY_DATABASE_URI = 'mysql://myapp@localhost/myapp'
-SQLALCHEMY_DATABASE_URI = 'postgresql://superset:Super192Var948TI@192.168.1.19/superset'
+SQLALCHEMY_DATABASE_URI = 'postgresql://superset:Super192Var948TI@192.168.1.19:5433/superset'
 
 # This config is exposed through flask-sqlalchemy, and can be used to set your metadata
 # database connection settings. You can use this to set arbitrary connection settings
